@@ -12,9 +12,9 @@ window.onload = () => {
 
     function displayData() {
         let  txt =$("text")  // データを表示するdiv要素の取得
-        txt.innerHTML = "x: " + aX + "<br>"         // x軸の値
-            + "y: " + aY + "<br>"         // y軸の値
-            + "z: " + aZ;                 // z軸の値
+        txt.innerHTML = "x: " + ax + "<br>"         // x軸の値
+            + "y: " + ay + "<br>"         // y軸の値
+            + "z: " + az;                 // z軸の値
     }
 
 
