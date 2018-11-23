@@ -2,6 +2,7 @@ let ax = 0;
 let ay = 0;
 let az = 0;
 
+const LINE_WIDTH = 5;
 window.onload = () => { 
     let canvas = $("bord");
     let ctx = canvas.getContext("2d");
@@ -11,31 +12,51 @@ window.onload = () => {
 
     //ボール動き
     function drawBall() {
-        let g = 9.80665;
-        let d = x / g;
         ctx.beginPath();
-        ctx.arc(x-d*ax, y-d*ay, 20, 0, Math.PI * 2);
+        ctx.arc(x, y, 20, 0, Math.PI * 2);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();
     }
-    
-    setInterval(draw, 10);
+    //ボールを動かす
+    function ballmove() { 
+        let g = 9.80665;　// 1Gの時の重力加速度[m/s^2]
+        let d = x / g;　　// 1m/s^2 あたりでボールが動く量
+        x = x - d * ax;
+        y = y + d * ay;
+    }
+
+    //フレーム描画
+    function drawFrame() { 
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, LINE_WIDTH);
+        ctx.fillRect(0, canvas.height - LINE_WIDTH, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, LINE_WIDTH, canvas.height);
+        ctx.fillRect(canvas.width - LINE_WIDTH, 0, canvas.width, canvas.height);
+    }
+
+    //30msごとに描画
+    setInterval(draw, 30);
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawFrame();
+        ballmove();
         drawBall();
         displayData();
+        
     }
 
     
 }
+//データを表示
 function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
-    txt.innerHTML = "x: " + ax + "<br>"         // x軸の値
-        + "y: " + ay + "<br>"         // y軸の値
+    txt.innerHTML = "x: " + ax  +" "        // x軸の値
+        + "y: " + ay +" "         // y軸の値
         + "z: " + az;                 // z軸の値
 }
 function $(id) { return document.getElementById(id); }
+
 //加速度センサーの値が変化したら実行
 window.addEventListener("devicemotion", (dat) => {
     ax = dat.accelerationIncludingGravity.x;
