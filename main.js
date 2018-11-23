@@ -20,10 +20,11 @@ window.onload = () => {
     }
     //ボールを動かす
     function ballmove() { 
-        let g = 9.80665;　// 1Gの時の重力加速度[m/s^2]
-        let d = x / g;　　// 1m/s^2 あたりでボールが動く量
-        x = x - d * ax;
-        y = y + d * ay;
+        let g = 9;
+        ax = ax / 90;
+        ay = ay / 180;
+        x = x - g * ax;
+        y = y + g * ay;
     }
 
     //フレーム描画
@@ -58,8 +59,7 @@ function displayData() {
 function $(id) { return document.getElementById(id); }
 
 //加速度センサーの値が変化したら実行
-window.addEventListener("devicemotion", (dat) => {
-    ax = dat.accelerationIncludingGravity.x;
-    ay = dat.accelerationIncludingGravity.y;
-    az = dat.accelerationIncludingGravity.z;
+window.addEventListener('deviceorientation', (dat) => {
+    ax = dat.gamma;
+    ay = dat.beta;
 });
