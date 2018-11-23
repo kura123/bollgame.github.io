@@ -39,6 +39,6 @@ function $(id) { return document.getElementById(id); }
 //加速度センサーの値が変化したら実行
 window.addEventListener("devicemotion", (dat) => {
     ax = dat.accelerationIncludingGravity.x;
-    aY = dat.accelerationIncludingGravity.y;
-    aZ = dat.accelerationIncludingGravity.z;
+    ay = dat.accelerationIncludingGravity.y;
+    az = dat.accelerationIncludingGravity.z;
 });
