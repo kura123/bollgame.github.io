@@ -42,7 +42,7 @@ window.onload = () => {
         }
 
         //障害物判定
-        if (80-ball_r<x<80+ball_r+LINE_WIDTH&&0<y<250+ball_r) {
+        if (80-ball_r<y<80&&0<x<240+ball_r) {
             y = 80 - ball_r;
         } 
 
@@ -57,7 +57,7 @@ window.onload = () => {
         ctx.fillRect(canvas.width - LINE_WIDTH, 0, canvas.width, canvas.height);
 
         //障害
-        ctx.fillRect(0, 80, 250, LINE_WIDTH);
+        ctx.fillRect(0, 80, 240, LINE_WIDTH);
         ctx.fillRect(80, 160, 300, LINE_WIDTH);
         
     }
@@ -81,7 +81,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト5";                 
+        + "  テスト6";                 
 }
 function $(id) { return document.getElementById(id); }
 
