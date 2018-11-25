@@ -42,12 +42,9 @@ window.onload = () => {
         }
 
         //障害物判定
-        if (0<x < 250 + ball_r && 0<y < 80 + ball_r) {
+        if (80-ball_r<x<80+ball_r+LINE_WIDTH&&0<y<250+ball_r) {
             y = 80 - ball_r;
-        } else if (x > 80 + ball_r && y > 160 + ball_r) {
-            y = 160 - ball_r;
-
-        }
+        } 
 
     }
 
@@ -84,7 +81,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト4";                 
+        + "  テスト5";                 
 }
 function $(id) { return document.getElementById(id); }
 
