@@ -1,14 +1,14 @@
 let ax = 0;
 let ay = 0;
-const ball_r = 20;
-const LINE_WIDTH = 5;
+const ball_r = 20; //玉の大きさ
+const LINE_WIDTH = 5;　//線の太さ
 
 window.onload = () => { 
     let canvas = $("bord");
     let ctx = canvas.getContext("2d");
     
-    let x = canvas.width/2;
-    let y = canvas.height/2;
+    let x = LINE_WIDTH+ball_r;
+    let y = LINE_WIDTH+ball_r;
 
     //ボール動き
     function drawBall() {
@@ -22,8 +22,9 @@ window.onload = () => {
     function ballmove() { 
         let g = 8;
         ax = ax / 90;
-        ay = ay / 180*2;
+        ay = ay / 180*3;
 
+        //枠から出ないように
         if (x < 0+ball_r+LINE_WIDTH) {
             x = 0 + ball_r + LINE_WIDTH;
         } else if (x > canvas.width - ball_r -LINE_WIDTH) {
@@ -39,6 +40,15 @@ window.onload = () => {
         }else { 
             y = y + g * ay;
         }
+
+        //障害物判定
+        if (x < 250 + ball_r && y < 80 + ball_r) {
+            y = 80 + ball_r;
+        } else if (x > 80 + ball_r && y > 160 + ball_r) {
+            y = 160 + ball_r;
+
+        }
+
     }
 
     //フレーム描画
@@ -48,6 +58,11 @@ window.onload = () => {
         ctx.fillRect(0, canvas.height - LINE_WIDTH, canvas.width, canvas.height);
         ctx.fillRect(0, 0, LINE_WIDTH, canvas.height);
         ctx.fillRect(canvas.width - LINE_WIDTH, 0, canvas.width, canvas.height);
+
+        //障害
+        ctx.fillRect(0, 80, 250, LINE_WIDTH);
+        ctx.fillRect(80, 160, 300, LINE_WIDTH);
+        
     }
 
     //30msごとに描画
@@ -69,7 +84,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト2";                 // z軸の値
+        + "  テスト3";                 
 }
 function $(id) { return document.getElementById(id); }
 
