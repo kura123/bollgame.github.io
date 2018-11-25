@@ -26,16 +26,16 @@ window.onload = () => {
 
         if (x < 0) {
             x = 0;
-        } else if (x>300) {
-            x = 300;
+        } else if (x>canvas.width) {
+            x = canvas.width;
         } else {
             x = x - g * ax; 
         }
 
         if (y < 0) {
             y = 0;
-        } else if(y>600){ 
-            y = 600; 
+        } else if(y>canvas.height){ 
+            y = canvas.height; 
         }else { 
             y = y - g * ay;
         }
@@ -54,10 +54,11 @@ window.onload = () => {
     setInterval(draw, 30);
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        displayData();
         drawFrame();
         ballmove();
         drawBall();
-        displayData();
+        
         
     }
 
@@ -68,7 +69,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" "         // y軸の値
-        + "z: " + az;                 // z軸の値
+        + "z: " + az+"   テスト１";                 // z軸の値
 }
 function $(id) { return document.getElementById(id); }
 
