@@ -14,17 +14,31 @@ window.onload = () => {
     function drawBall() {
         ctx.beginPath();
         ctx.arc(x, y, 20, 0, Math.PI * 2);
-        ctx.fillStyle = "#0095DD";
+        ctx.fillStyle = "#DD9500";
         ctx.fill();
         ctx.closePath();
     }
     //ボールを動かす
     function ballmove() { 
-        let g = 9;
+        let g = 8;
         ax = ax / 90;
         ay = ay / 180;
-        x = x - g * ax;
-        y = y + g * ay;
+
+        if (x < 0) {
+            x = 0;
+        } else if (x>300) {
+            x = 300;
+        } else {
+            x = x - g * ax; 
+        }
+
+        if (y < 0) {
+            y = 0;
+        } else if(y>600){ 
+            y = 600; 
+        }else { 
+            y = y - g * ay;
+        }
     }
 
     //フレーム描画
