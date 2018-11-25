@@ -1,8 +1,8 @@
 let ax = 0;
 let ay = 0;
-let az = 0;
-
+const ball_r = 20;
 const LINE_WIDTH = 5;
+
 window.onload = () => { 
     let canvas = $("bord");
     let ctx = canvas.getContext("2d");
@@ -13,7 +13,7 @@ window.onload = () => {
     //ボール動き
     function drawBall() {
         ctx.beginPath();
-        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.arc(x, y, ball_r, 0, Math.PI * 2);
         ctx.fillStyle = "#DD9500";
         ctx.fill();
         ctx.closePath();
@@ -22,22 +22,22 @@ window.onload = () => {
     function ballmove() { 
         let g = 8;
         ax = ax / 90;
-        ay = ay / 180;
+        ay = ay / 180*2;
 
-        if (x < 0) {
-            x = 0;
-        } else if (x>canvas.width) {
-            x = canvas.width;
+        if (x < 0+ball_r+LINE_WIDTH) {
+            x = 0 + ball_r + LINE_WIDTH;
+        } else if (x > canvas.width - ball_r -LINE_WIDTH) {
+            x = canvas.width - ball_r - LINE_WIDTH;
         } else {
-            x = x - g * ax; 
+            x = x + g * ax; 
         }
 
-        if (y < 0) {
-            y = 0;
-        } else if(y>canvas.height){ 
-            y = canvas.height; 
+        if (y < 0+ball_r+LINE_WIDTH) {
+            y = 0 + ball_r + LINE_WIDTH;
+        } else if(y>canvas.height-ball_r-LINE_WIDTH){ 
+            y = canvas.height - ball_r - LINE_WIDTH; 
         }else { 
-            y = y - g * ay;
+            y = y + g * ay;
         }
     }
 
@@ -68,8 +68,8 @@ window.onload = () => {
 function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
-        + "y: " + ay +" "         // y軸の値
-        + "z: " + az+"   テスト１";                 // z軸の値
+        + "y: " + ay +" </br>"         // y軸の値
+        + "  テスト2";                 // z軸の値
 }
 function $(id) { return document.getElementById(id); }
 
