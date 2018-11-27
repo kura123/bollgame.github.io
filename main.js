@@ -47,11 +47,12 @@ window.onload = () => {
         } else if (0 < x && x < 240 + ball_r&&80<y&&y<80+LINE_WIDTH+ball_r) { 
             y = 80 + ball_r + LINE_WIDTH;
         }
-        if (80 - ball_r < x && x < canvas.width && 160 - ball_r < y && y < 160) {
-            y = 160 - ball_r;
-        } else if (80 - ball_r < x && x < canvas.width && 160 < y && y < 160 + LINE_WIDTH + ball_r) {
-            y = 160 + ball_r + LINE_WIDTH;
-         }
+        if (80 - ball_r < x && x < canvas.width && 180 - ball_r < y && y < 180) {
+            y = 180 - ball_r;
+        } else if (80 - ball_r < x && x < canvas.width && 180 < y && y < 180 + LINE_WIDTH + ball_r) {
+            y = 180 + ball_r + LINE_WIDTH;
+        }
+        
 
     }
 
@@ -64,8 +65,18 @@ window.onload = () => {
         ctx.fillRect(canvas.width - LINE_WIDTH, 0, canvas.width, canvas.height);
 
         //障害
+        ctx.fillStyle = "blue";
         ctx.fillRect(0, 80, 240, LINE_WIDTH);
-        ctx.fillRect(80, 160, 300, LINE_WIDTH);
+        ctx.fillRect(80, 180, 300, LINE_WIDTH);
+        ctx.fillRect(80, 280, LINE_WIDTH, canvas.height);
+        ctx.fillRect(180, 350, canvas.width, LINE_WIDTH);
+        ctx.fillRect(80, 500, 200, LINE_WIDTH);
+
+        //ゴール
+        ctx.fillStyle = "red";
+        ctx.fillRect(80+LINE_WIDTH,500+LINE_WIDTH,ball_r*3,ball_r*3);
+        
+
         
     }
 
@@ -88,7 +99,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト7";                 
+        + "  テスト9";                 
 }
 function $(id) { return document.getElementById(id); }
 
