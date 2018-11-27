@@ -42,9 +42,16 @@ window.onload = () => {
         }
 
         //障害物判定
-        if (80-ball_r<y&&y<80&&0<x&&x<240+ball_r) {
+        if (80 - ball_r < y && y < 80 && 0 < x && x < 240 + ball_r) {
             y = 80 - ball_r;
-        } 
+        } else if (0 < x && x < 240 + ball_r&&80<y&&y<80+LINE_WIDTH+ball_r) { 
+            y = 80 + ball_r + LINE_WIDTH;
+        }
+        if (80 - ball_r < x && x < canvas.width && 160 - ball_r < y && y < 160) {
+            y = 160 - ball_r;
+        } else if (80 - ball_r < x && x < canvas.width && 160 < y && y < 160 + LINE_WIDTH + ball_r) {
+            y = 160 + ball_r + LINE_WIDTH;
+         }
 
     }
 
