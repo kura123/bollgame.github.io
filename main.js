@@ -53,9 +53,9 @@ window.onload = () => {
             y = 180 + ball_r + LINE_WIDTH;
         }
         //3つめの障害
-        if (80 - ball_r < x && x < 80 && 280-ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
+        if (80 - ball_r < x && x < 80 && 280-ball_r < y && y < canvas.height) {
             x = 80 - ball_r;
-        } else if(80 < x && x < 80 + ball_r +LINE_WIDTH&& 280 - ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
+        } else if(80 < x && x < 80 + ball_r +LINE_WIDTH&& 280 - ball_r < y && y < canvas.height) {
             x = 80 + ball_r+LINE_WIDTH;
         }
         //4つめ
@@ -64,7 +64,7 @@ window.onload = () => {
         } else if (180 - ball_r < x && x < canvas.width - LINE_WIDTH - ball_r && 350 < y && y < 350 + LINE_WIDTH + ball_r) {
             y = 350 + ball_r + LINE_WIDTH;
         }
-        
+        //5つめ
         if (80 - ball_r < x && x < 280 + ball_r && 500 - ball_r < y && y < 500) {
             y = 500 - ball_r;
         } else if (80 - ball_r < x && x < 280 + ball_r &&500<y&&y<500+LINE_WIDTH+ball_r) { 
@@ -91,21 +91,28 @@ window.onload = () => {
 
         //ゴール
         ctx.fillStyle = "red";
-        ctx.fillRect(80+LINE_WIDTH,500+LINE_WIDTH,ball_r*3,ball_r*3);
-        
+        ctx.fillRect(80+LINE_WIDTH,500+LINE_WIDTH,ball_r*3,ball_r*3);   
+    }
 
-        
+    function check() { 
+        if (80 + LINE_WIDTH + ball_r < x && x < 80 + LINE_WIDTH + ball_r * 2 && 500 + LINE_WIDTH + ball_r < y && y < 500 + LINE_WIDTH + ball_r * 2) { 
+            return true;
+        }
+        return false;
     }
 
     //30msごとに描画
-    setInterval(draw, 10);
+    setInterval(draw, 15);
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         displayData();
         drawFrame();
-        ballmove();
-        drawBall();
-        
+        if (check()) {
+            
+        } else {
+            ballmove();
+            drawBall();
+        }
         
     }
 
