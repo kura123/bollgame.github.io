@@ -56,8 +56,14 @@ window.onload = () => {
         if (80 - ball_r < x && x < 80 && 280-ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
             x = 80 - ball_r;
         } else if(80 < x && x < 80 + ball_r && 280 - ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
-            x = 80 + ball_r;
+            x = 80 + ball_r+LINE_WIDTH;
         }
+        //4つめ
+        if (180 - ball_r < x && x < canvas.width - LINE_WIDTH - ball_r && 350 - ball_r < y && y < 350) {
+            y = 350 - ball_r;
+        } else if (180 - ball_r < x && x < canvas.width - LINE_WIDTH - ball_r && 350 < y && y < 350 + LINE_WIDTH + ball_r) {
+            
+         }
 
     }
 
