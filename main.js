@@ -53,9 +53,9 @@ window.onload = () => {
             y = 180 + ball_r + LINE_WIDTH;
         }
         //3つめの障害
-        if (80 - ball_r < x && x < 80 && 280-ball_r < y && y < canvas.width - ball_r - LINE_WIDTH) {
+        if (80 - ball_r < x && x < 80 && 280-ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
             x = 80 - ball_r;
-        } else if(80 < x && x < 80 + ball_r && 280 - ball_r < y && y < canvas.width - ball_r - LINE_WIDTH) {
+        } else if(80 < x && x < 80 + ball_r && 280 - ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
             x = 80 + ball_r;
         }
 
@@ -86,7 +86,7 @@ window.onload = () => {
     }
 
     //30msごとに描画
-    setInterval(draw, 30);
+    setInterval(draw, 10);
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         displayData();
@@ -104,7 +104,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト10";                 
+        + "  テスト11";                 
 }
 function $(id) { return document.getElementById(id); }
 
