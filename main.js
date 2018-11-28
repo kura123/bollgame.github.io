@@ -55,15 +55,21 @@ window.onload = () => {
         //3つめの障害
         if (80 - ball_r < x && x < 80 && 280-ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
             x = 80 - ball_r;
-        } else if(80 < x && x < 80 + ball_r && 280 - ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
+        } else if(80 < x && x < 80 + ball_r +LINE_WIDTH&& 280 - ball_r < y && y < canvas.height - ball_r - LINE_WIDTH) {
             x = 80 + ball_r+LINE_WIDTH;
         }
         //4つめ
         if (180 - ball_r < x && x < canvas.width - LINE_WIDTH - ball_r && 350 - ball_r < y && y < 350) {
             y = 350 - ball_r;
         } else if (180 - ball_r < x && x < canvas.width - LINE_WIDTH - ball_r && 350 < y && y < 350 + LINE_WIDTH + ball_r) {
-            
-         }
+            y = 350 + ball_r + LINE_WIDTH;
+        }
+        
+        if (80 - ball_r < x && x < 280 + ball_r && 500 - ball_r < y && y < 500) {
+            y = 500 - ball_r;
+        } else if (80 - ball_r < x && x < 280 + ball_r &&500<y&&y<500+LINE_WIDTH+ball_r) { 
+            y = 500 + ball_r + LINE_WIDTH;
+        }
 
     }
 
@@ -110,7 +116,7 @@ function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト11";                 
+        + "  テスト12";                 
 }
 function $(id) { return document.getElementById(id); }
 
