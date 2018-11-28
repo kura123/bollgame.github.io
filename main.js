@@ -102,28 +102,26 @@ window.onload = () => {
     }
 
     //30msごとに描画
-    setInterval(draw, 15);
+    setInterval(draw, 30);
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         displayData();
         drawFrame();
+        //クリアしたかどうか
         if (check()) {
-            
         } else {
             ballmove();
             drawBall();
         }
         
     }
-
-    
 }
 //データを表示
 function displayData() {
     let txt = $("text")  // データを表示するdiv要素の取得
     txt.innerHTML = "x: " + ax  +" "        // x軸の値
         + "y: " + ay +" </br>"         // y軸の値
-        + "  テスト12";                 
+        + "  テスト13";                 
 }
 function $(id) { return document.getElementById(id); }
 
